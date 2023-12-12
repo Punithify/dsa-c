@@ -1,0 +1,128 @@
+\documentclass{article}
+
+
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{graphicx}
+\usepackage{tabularx}
+
+% Define C code style
+\lstdefinestyle{cstyle}{
+    language=C,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue}\bfseries,
+    commentstyle=\color{green!60!black},
+    stringstyle=\color{red},
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    stepnumber=1,
+    numbersep=8pt,
+    backgroundcolor=\color{white},
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    frame=single,
+    rulecolor=\color{black},
+    tabsize=4,
+    captionpos=b,
+    breaklines=true,
+    breakatwhitespace=false,
+    escapeinside={\%*}{*)},
+    morekeywords={malloc, free, printf}
+}
+\begin{document}
+\title{DSA Structure Basics}
+\maketitle
+\section{Structure Array}
+\begin{lstlisting}[style=CStyle]
+// Structure Array
+#include <stdio.h>
+
+struct date
+{
+    int d, m, y;
+};
+
+struct date inputDate();
+void showDate(struct date);
+
+int main()
+{
+
+    // struct date d1;
+    struct date dob[4]; // space occcuiped 48bytes
+    printf("enter four DOB of four students\n");
+    int i = 0;
+    for (i = 0; i <= 3; i++)
+    {
+        dob[i] = inputDate();
+    }
+    // d1=inputDate();
+    for (i = 0; i <= 3; i++)
+    {
+        showDate(dob[i]);
+    }
+    // d2=d1;//assigning structure d1 to structure d2
+    return 0;
+}
+
+void showDate(struct date anyDate)
+{
+    printf("%d-%d-%d\n", anyDate.d, anyDate.m, anyDate.y);
+}
+
+struct date inputDate()
+{
+    struct date anyDate;
+    printf("\nEnter a date");
+    scanf("%d/%d/%d", &anyDate.d, &anyDate.m, &anyDate.y);
+    return anyDate;
+}
+\end{lstlisting}
+
+\section{Structure Pointer}
+\begin{lstlisting}[style=CStyle]
+// structure pointer
+#include <stdio.h>
+
+struct date
+{
+    int d, m, y;
+};
+
+struct date inputDate();
+void showDate(struct date);
+
+int main()
+{
+
+    // struct date d1;
+    struct date d1; // space occcuiped 48bytes
+    struct date *p;
+    printf("enter four DOB of four students\n");
+    p = &d1; // passing the structure reference to the pointer variable of type date
+    //*p is equivalent to d1 (important)
+    *p = inputDate();
+    // printf("%d\n", p->d); accessing structure variables using pointers
+    showDate(*p);
+    // d2=d1;//assigning structure d1 to structure d2
+    return 0;
+}
+
+void showDate(struct date anyDate)
+{
+    printf("%d-%d-%d\n", anyDate.d, anyDate.m, anyDate.y);
+}
+
+struct date inputDate()
+{
+    struct date anyDate;
+    printf("\nEnter a date");
+    scanf("%d/%d/%d", &anyDate.d, &anyDate.m, &anyDate.y);
+    return anyDate;
+}
+\end{lstlisting}
+
+
+\end{document} 
