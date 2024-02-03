@@ -1,0 +1,10 @@
+8	Honeypot8	0.00
+9	Honeypot9	0.00
+5	Honeypot5	4.00
+6	Honeypot6	4.00
+7	Honeypot7	4.00
+3	Honeypot3	19.00
+1	Honeypot1	36.00
+2	Honeypot2	43.00
+4	Honeypot4	44.00
+10	Honeypot10	44.00
